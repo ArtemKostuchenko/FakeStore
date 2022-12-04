@@ -33,3 +33,22 @@ export const ratingSet = (rate) => {
     }
     return rateStr
 }
+
+
+//getting min and max price of products
+
+export const getMaxAndMinProducts = async(products) => {
+    let min = Infinity;
+    let max = -Infinity;
+    products.forEach(el => {
+        if(el.price < min){
+            min = el.price;
+        }
+    })
+    products.forEach(el => {
+        if(el.price > max){
+            max = el.price;
+        }
+    })
+    return {min, max}
+}
