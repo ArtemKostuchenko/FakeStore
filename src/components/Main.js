@@ -7,6 +7,7 @@ import {dataSort, filterByCategories, filterPrice} from "../utils/FilterFunstion
 import Sort from "./Sort";
 
 
+
 function Main() {
     //states
     const [products, setProducts] = useState([]);
@@ -65,7 +66,6 @@ function Main() {
         setSortMethod(sortMethod);
         setSort(true);
     }
-
 
     return (
         <div>

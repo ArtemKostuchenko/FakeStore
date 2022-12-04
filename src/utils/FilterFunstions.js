@@ -11,7 +11,6 @@ export const filterByCategories = (data, categories) => {
         }
     }
     return newData;
-}
 
 export const dataSort = (data, sortMethod) => {
     let sortArray;
