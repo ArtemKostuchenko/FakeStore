@@ -16,6 +16,7 @@ export const fetchData = async (url) => {
     }
 }
 
+
 //rating configuration
 export const ratingSet = (rate) => {
     let str = rate.toString()
