@@ -3,7 +3,8 @@ import Header from "./Header";
 import {fetchData, getMaxAndMinProducts} from "../utils/Others";
 import ProductList from "./ProductList";
 import Filter from "./Filter";
-import {filterByCategories, filterPrice} from "../utils/FilterFunstions";
+import {dataSort, filterByCategories, filterPrice} from "../utils/FilterFunstions";
+import Sort from "./Sort";
 
 
 function Main() {
@@ -14,6 +15,8 @@ function Main() {
     const [isCategory, setCategory] = useState(false);
     const [categories, setCategories] = useState([]);
     const [minMax, setMinMax] = useState({});
+    const [isSort, setSort] = useState(false);
+    const [sortMethod, setSortMethod] = useState('');
 
     //get
 
@@ -22,13 +25,15 @@ function Main() {
         data = await fetchData('https://fakestoreapi.com/products');
         if (data){
             setMinMax(await getMaxAndMinProducts(data));
-
+            if (sortMethod !== '')
+                data = dataSort(data, sortMethod);
             if (range.min && range.max)
                 data = filterPrice(data, range.min, range.max);
             if(categories.length !== 0){
                 data = filterByCategories(data, categories);
             }
             setProducts(data);
+            setSort(false);
             setCategory(false);
             setPrice(false);
         }
@@ -41,10 +46,10 @@ function Main() {
     }, []);
 
     useEffect(() => {
-        if( isPrice || isCategory){
+        if( isSort || isPrice || isCategory){
             getProducts();
         }
-    }, [ isPrice, isCategory]);
+    }, [ isSort, isPrice, isCategory]);
 
     //functions
 
@@ -56,6 +61,11 @@ function Main() {
         setCategories(categoryArray);
         setCategory(true);
     }
+    const sortData = (sortMethod) => {
+        setSortMethod(sortMethod);
+        setSort(true);
+    }
+
 
     return (
         <div>
@@ -65,6 +75,7 @@ function Main() {
                     <div className="main">
                         <Filter minMax={minMax} filterPrice={filterByPrice} filterCategories={filterByCategory}/>
                         <div>
+                            <Sort sortData={sortData}/>
                             <ProductList products={products}/>
                         </div>
                     </div>

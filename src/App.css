@@ -305,3 +305,14 @@ input[type='range']:active::-webkit-slider-thumb{
   left:0;
   right:0;
 }
+/*Sort*/
+.sortBlock{
+  display: flex;
+  justify-content: right;
+}
+.sortBlock select{
+  width: 15rem;
+}
+.sortBlock{
+  margin-bottom: 0.2rem;
+}
