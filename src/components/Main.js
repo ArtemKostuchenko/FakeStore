@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Header from "./Header";
 import {fetchData} from "../utils/Others";
+import ProductList from "./ProductList";
 
 
 function Main() {
@@ -28,7 +29,15 @@ function Main() {
     return (
         <div>
             <Header/>
-
+            <div className="App">
+                <div>
+                    <div className="main">
+                        <div>
+                            <ProductList products={products}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
