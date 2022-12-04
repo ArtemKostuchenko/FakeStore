@@ -15,3 +15,20 @@ export const fetchData = async (url) => {
         return getProducts();
     }
 }
+
+//rating configuration
+export const ratingSet = (rate) => {
+    let str = rate.toString()
+    let splitNumber = str.split('.');
+    let rateStr = splitNumber[0]
+    if (2.5 >= parseInt(splitNumber[1]) >= 1 || parseInt(splitNumber[1]) > 1 && parseInt(splitNumber[1]) <= 2.5) {
+        rateStr += '.25'
+    } else if (parseInt(splitNumber[1]) > 2.5 && parseInt(splitNumber[1]) <= 5) {
+        rateStr += '.5'
+    } else if (parseInt(splitNumber[1]) > 5 && parseInt(splitNumber[1]) <= 7.5) {
+        rateStr += '.75'
+    } else {
+        rateStr = Math.round(rate).toString()
+    }
+    return rateStr
+}
