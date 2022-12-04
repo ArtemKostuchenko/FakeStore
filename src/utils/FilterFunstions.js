@@ -3,15 +3,15 @@ export const filterPrice = (products, min, max) => {
 }
 export const filterByCategories = (data, categories) => {
     let newData = [];
-    for(let i = 0; i < data.length; i++){
-        for(let j = 0; j < categories.length; j++){
-            if(data[i].category === categories[j]){
+    for (let i = 0; i < data.length; i++) {
+        for (let j = 0; j < categories.length; j++) {
+            if (data[i].category === categories[j]) {
                 newData.push(data[i])
             }
         }
     }
     return newData;
-
+}
 export const dataSort = (data, sortMethod) => {
     let sortArray;
     switch (sortMethod) {

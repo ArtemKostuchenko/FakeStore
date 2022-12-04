@@ -4,7 +4,8 @@ import heart from "../images/heart-header.png";
 import cart from "../images/cart-header.png";
 
 
-function Header() {
+function Header(props) {
+    const handleFavorites = () => props.favHandle();
     return (
         <header>
             <div className="brand">FakeStore</div>
@@ -15,7 +16,7 @@ function Header() {
                     </button>
                 </div>
                 <div>
-                    <button>
+                    <button  onClick={handleFavorites}>
                         <img src={heart} width={30} alt="Heart"/>
                     </button>
                 </div>

@@ -1,10 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Header from "./Header";
 import {fetchData, getMaxAndMinProducts} from "../utils/Others";
 import ProductList from "./ProductList";
 import Filter from "./Filter";
 import {dataSort, filterByCategories, filterPrice} from "../utils/FilterFunstions";
 import Sort from "./Sort";
+import FavoriteProducts from "./FavoriteProducts";
+import {disableBodyScroll, enableBodyScroll} from 'body-scroll-lock';
 
 
 
@@ -18,6 +20,13 @@ function Main() {
     const [minMax, setMinMax] = useState({});
     const [isSort, setSort] = useState(false);
     const [sortMethod, setSortMethod] = useState('');
+    const [showFavorites, setShowFavorites] = useState(false);
+    const [update, setUpdate] = useState(false);
+
+    //refs
+
+    const favorites = useRef();
+    const mainPage = useRef();
 
     //get
 
@@ -52,31 +61,63 @@ function Main() {
         }
     }, [ isSort, isPrice, isCategory]);
 
+    useEffect(() => {
+        handleFavorites()
+    }, [showFavorites]);
+
     //functions
 
     const filterByPrice = (r) => {
         setRange(r);
         setPrice(true);
     }
+
     const filterByCategory = (categoryArray) => {
         setCategories(categoryArray);
         setCategory(true);
     }
+
     const sortData = (sortMethod) => {
         setSortMethod(sortMethod);
         setSort(true);
     }
 
+    const showOrHideFavoritesProducts = () => {
+        setShowFavorites(!showFavorites);
+    }
+
+    const handleFavorites = () => {
+        if (showFavorites) {
+            favorites.current.children[0].children[0].style.display = 'block';
+            disableBodyScroll(mainPage.current);
+            mainPage.current.classList.add('blackout')
+            favorites.current.children[0].children[0].style.backgroundColor = 'white'
+        } else {
+            if(favorites.current){
+                favorites.current.children[0].children[0].style.display = 'none'
+            }
+            mainPage.current.classList.remove('blackout')
+            enableBodyScroll(mainPage.current);
+        }
+    }
+    const updateAllComponents = () => {
+        setUpdate(!update);
+    }
+
     return (
-        <div>
-            <Header/>
+        <div  ref={mainPage}>
+            <Header favHandle={showOrHideFavoritesProducts}/>
+            {showFavorites &&  <div ref={favorites}>
+                <FavoriteProducts favHandle={showOrHideFavoritesProducts} update={updateAllComponents} updateComponent={update}/>
+            </div>}
+
             <div className="App">
                 <div>
                     <div className="main">
                         <Filter minMax={minMax} filterPrice={filterByPrice} filterCategories={filterByCategory}/>
                         <div>
                             <Sort sortData={sortData}/>
-                            <ProductList products={products}/>
+                            <ProductList products={products} update={updateAllComponents}/>
                         </div>
                     </div>
                 </div>
