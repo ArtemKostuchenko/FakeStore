@@ -14,7 +14,7 @@ export const fetchData = async (url) => {
     }catch (e) {
         return getProducts();
     }
-
+}
 
 //rating configuration
 export const ratingSet = (rate) => {
