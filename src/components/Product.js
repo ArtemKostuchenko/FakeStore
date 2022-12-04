@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useRef} from "react";
 import heart from "../images/heart.png";
 import compare from "../images/compare.png";
 import cart from "../images/cart.png";
+import cartFocus from "../images/cart_focus.png";
 import {ratingSet} from "../utils/Others";
 
 function Product(props) {
+    //focus Cart
+    const handleCartRef = useRef();
+    const focusCart = () => {
+        if (handleCartRef.current.src === cart)
+            handleCartRef.current.src = cartFocus;
+        else
+            handleCartRef.current.src = cart;
+    }
     return (
         <li>
-            <div className="productBlock hoverProductBlock" key={props.id}>
+            <div className="productBlock hoverProductBlock" key={props.id} onClick={focusCart}>
                 <div className="productAction">
                     <div>
                         <div>
@@ -51,7 +60,7 @@ function Product(props) {
                     </div>
                     <div className="productCart">
                         <button>
-                            <img src={cart} alt="Cart"/>
+                            <img ref={handleCartRef} src={cart} alt="Cart" />
                         </button>
                     </div>
                 </div>
