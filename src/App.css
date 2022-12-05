@@ -13,7 +13,8 @@
 }
 
 .main{
-  margin-top: 12rem;
+  margin-top: 10rem;
+  margin-bottom: 5rem;
   display: flex;
 }
 
@@ -304,7 +305,9 @@ input[type='range']:active::-webkit-slider-thumb{
   bottom: -10px;
   left:0;
   right:0;
+
 /*Sort*/
+
 .sortBlock{
   display: flex;
   justify-content: right;
@@ -314,4 +317,205 @@ input[type='range']:active::-webkit-slider-thumb{
 }
 .sortBlock{
   margin-bottom: 0.2rem;
+}
+
+/*Favorite Products*/
+
+.favoriteProducts{
+  display: block;
+  position: fixed;
+  margin-top: 60rem;
+  height: 50rem;
+  width: 85rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  z-index: 999;
+}
+.blackout{
+  background: rgba(0,0,0,.2);
+}
+.headerFavoriteProducts, .manageFavoriteProducts{
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+}
+.headerFavoriteProducts div:first-child{
+  margin-left: 2rem;
+  font-family: "BlinkMacSystemFont", serif;
+  font-size: 20px;
+}
+.headerFavoriteProducts div:last-child{
+  margin-right: 2rem;
+}
+.manageFavoriteProducts div:first-child{
+  margin-left: 2rem;
+}
+.manageFavoriteProducts div:last-child{
+  margin-right: 2rem;
+}
+.listFavoriteProducts{
+  width: 100%;
+  height: 40rem;
+  position: fixed;
+  overflow-y: scroll;
+}
+.checkboxFavorite{
+  height: 24px;
+  width: 24px;
+  padding-left: 6px;
+}
+.checkboxFavorite input[type="checkbox"]{
+  height: 24px;
+  width: 24px;
+}
+
+/* Notification and Compare*/
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+#notification{
+  position: fixed;
+  margin-top: 45%;
+  width: 100%;
+}
+.notificationBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 999;
+}
+.compareBlock{
+  border: 1px solid lightgreen;
+  border-radius: 5px;
+}
+.compareBlock p {
+  margin: 0.5rem 10rem;
+  font-size: 13px;
+}
+
+/*Counter*/
+.counter {
+  position: absolute;
+  margin-top: -0.4rem;
+  margin-left: -0.5rem;
+}
+
+/*Favorite Products*/
+
+.favoriteProducts{
+  display: block;
+  position: fixed;
+  margin-top: 60rem;
+  height: 50rem;
+  width: 85rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  z-index: 999;
+}
+.blackout{
+  background: rgba(0,0,0,.2);
+}
+.headerFavoriteProducts, .manageFavoriteProducts{
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid lightgray;
+}
+.headerFavoriteProducts div:first-child{
+  margin-left: 2rem;
+  font-family: "BlinkMacSystemFont", serif;
+  font-size: 20px;
+}
+.headerFavoriteProducts div:last-child{
+  margin-right: 2rem;
+}
+.manageFavoriteProducts div:first-child{
+  margin-left: 2rem;
+}
+.manageFavoriteProducts div:last-child{
+  margin-right: 2rem;
+}
+.listFavoriteProducts{
+  width: 100%;
+  height: 40rem;
+  position: fixed;
+  overflow-y: scroll;
+}
+.checkboxFavorite{
+  height: 24px;
+  width: 24px;
+  padding-left: 6px;
+}
+.checkboxFavorite input[type="checkbox"]{
+  height: 24px;
+  width: 24px;
+}
+
+/* Notification and Compare*/
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+#notification{
+  position: fixed;
+  margin-top: 45%;
+  width: 100%;
+}
+.notificationBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 999;
+}
+.compareBlock{
+  border: 1px solid lightgreen;
+  border-radius: 5px;
+}
+.compareBlock p {
+  margin: 0.5rem 10rem;
+  font-size: 13px;
+}
+/*Counter*/
+.counter {
+  position: absolute;
+  margin-top: -0.4rem;
+  margin-left: -0.5rem;
 }
