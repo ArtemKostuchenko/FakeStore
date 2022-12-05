@@ -28,6 +28,7 @@ function Main() {
     const favorites = useRef();
     const mainPage = useRef();
 
+
     //get
 
     const getProducts = async () => {
@@ -75,6 +76,10 @@ function Main() {
     const filterByCategory = (categoryArray) => {
         setCategories(categoryArray);
         setCategory(true);
+    }
+    const sortData = (sortMethod) => {
+        setSortMethod(sortMethod);
+        setSort(true);
     }
 
     const sortData = (sortMethod) => {
